@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import styles from "./Layout.module.css";
-import Azure from "../../assets/Azure.svg";
+import Azure from "../../assets/Huamei.svg";
 import { CopyRegular, ShareRegular } from "@fluentui/react-icons";
 import { Dialog, Stack, TextField } from "@fluentui/react";
 import { useEffect, useState } from "react";
@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 const Layout = () => {
     const [isSharePanelOpen, setIsSharePanelOpen] = useState<boolean>(false);
     const [copyClicked, setCopyClicked] = useState<boolean>(false);
-    const [copyText, setCopyText] = useState<string>("Copy URL");
+    const [copyText, setCopyText] = useState<string>("复制链接");
 
     const handleShareClick = () => {
         setIsSharePanelOpen(true);
@@ -17,7 +17,7 @@ const Layout = () => {
     const handleSharePanelDismiss = () => {
         setIsSharePanelOpen(false);
         setCopyClicked(false);
-        setCopyText("Copy URL");
+        setCopyText("复制链接");
     };
 
     const handleCopyClick = () => {
@@ -27,7 +27,7 @@ const Layout = () => {
 
     useEffect(() => {
         if (copyClicked) {
-            setCopyText("Copied URL");
+            setCopyText("已复制链接");
         }
     }, [copyClicked]);
 
@@ -42,11 +42,11 @@ const Layout = () => {
                             aria-hidden="true"
                         />
                         <Link to="/" className={styles.headerTitleContainer}>
-                            <h1 className={styles.headerTitle}>Azure AI</h1>
+                            <h1 className={styles.headerTitle}>H&H AI智能助手</h1>
                         </Link>
                         <div className={styles.shareButtonContainer} role="button" tabIndex={0} aria-label="Share" onClick={handleShareClick} onKeyDown={e => e.key === "Enter" || e.key === " " ? handleShareClick() : null}>
                             <ShareRegular className={styles.shareButton} />
-                            <span className={styles.shareButtonText}>Share</span>
+                            <span className={styles.shareButtonText}>分享</span>
                         </div>
                     </Stack>
                 </div>
@@ -71,7 +71,7 @@ const Layout = () => {
                       }]
                 }}
                 dialogContentProps={{
-                    title: "Share the web app",
+                    title: "分享链接",
                     showCloseButton: true
                 }}
             >

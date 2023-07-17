@@ -7,7 +7,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeRaw from "rehype-raw"; 
 
 import styles from "./Chat.module.css";
-import Azure from "../../assets/Azure.svg";
+import Azure from "../../assets/Huamei.svg";
 
 import {
     ChatMessage,
@@ -89,7 +89,7 @@ const Chat = () => {
         } catch ( e )  {
             if (!abortController.signal.aborted) {
                 console.error(result);
-                let errorMessage = "An error occurred. Please try again. If the problem persists, please contact the site administrator.";
+                let errorMessage = "出现错误。请再试一次。如果问题仍然存在，请与网站管理员联系。";
                 if (result.error?.message) {
                     errorMessage = result.error.message;
                 }
@@ -173,8 +173,8 @@ const Chat = () => {
                                     className={styles.chatIcon}
                                     aria-hidden="true"
                                 />
-                                <h1 className={styles.chatEmptyStateTitle}>Start chatting</h1>
-                                <h2 className={styles.chatEmptyStateSubtitle}>This chatbot is configured to answer your questions</h2>
+                                <h1 className={styles.chatEmptyStateTitle}>开始聊天</h1>
+                                <h2 className={styles.chatEmptyStateSubtitle}>H&H AI 智能助手，让您的工作得心应手。</h2>
                             </Stack>
                         ) : (
                             <div className={styles.chatMessageStream} style={{ marginBottom: isLoading ? "40px" : "0px"}} role="log">
@@ -211,7 +211,7 @@ const Chat = () => {
                                         <div className={styles.chatMessageGpt}>
                                             <Answer
                                                 answer={{
-                                                    answer: "Generating answer...",
+                                                    answer: "答案生成中...",
                                                     citations: []
                                                 }}
                                                 onCitationClicked={() => null}
@@ -229,13 +229,13 @@ const Chat = () => {
                                     horizontal
                                     className={styles.stopGeneratingContainer}
                                     role="button"
-                                    aria-label="Stop generating"
+                                    aria-label="Clear session"
                                     tabIndex={0}
                                     onClick={stopGenerating}
                                     onKeyDown={e => e.key === "Enter" || e.key === " " ? stopGenerating() : null}
                                     >
                                         <SquareRegular className={styles.stopGeneratingIcon} aria-hidden="true"/>
-                                        <span className={styles.stopGeneratingText} aria-hidden="true">Stop generating</span>
+                                        <span className={styles.stopGeneratingText} aria-hidden="true">停止生成</span>
                                 </Stack>
                             )}
                             <div
@@ -254,7 +254,7 @@ const Chat = () => {
                             </div>
                             <QuestionInput
                                 clearOnSend
-                                placeholder="Type a new question..."
+                                placeholder=""
                                 disabled={isLoading}
                                 onSend={question => makeApiRequest(question)}
                             />
